@@ -1,0 +1,13 @@
+.card-container {
+    margin: 0 10px;
+    background-color: rgb(75, 75, 255);
+    border-radius: 5px;
+    p {
+        color: white;
+        padding: 7px;
+    }
+    transition: 1s all;
+}
+.card-dragging{
+    background-color: lightblue;
+}

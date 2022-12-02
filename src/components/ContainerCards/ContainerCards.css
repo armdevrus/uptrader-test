@@ -1,0 +1,12 @@
+.layout-cards {
+  flex: 1;
+  background-color: black;
+  border-radius: 5px;
+}
+.layout-cards h5 {
+  color: white;
+  margin: 0;
+  text-align: center;
+  height: 40px;
+  transform: translateY(25%);
+}/*# sourceMappingURL=ContainerCards.css.map */

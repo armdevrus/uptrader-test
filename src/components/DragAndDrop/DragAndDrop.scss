@@ -1,0 +1,18 @@
+.flex{
+    display: flex;
+    column-gap: 10px;
+}
+.add-card {
+    margin: 0;
+    > input {
+        width: 70%;
+        transform: translateX(25%);
+        margin-bottom: 20px;
+        height: 25px;
+        text-indent: 10px;
+        &:focus{
+            outline: none;
+        }
+        
+    }
+}

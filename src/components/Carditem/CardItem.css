@@ -1,0 +1,14 @@
+.card-container {
+  margin: 0 10px;
+  background-color: rgb(75, 75, 255);
+  border-radius: 5px;
+  transition: 1s all;
+}
+.card-container p {
+  color: white;
+  padding: 7px;
+}
+
+.card-dragging {
+  background-color: lightblue;
+}/*# sourceMappingURL=CardItem.css.map */
