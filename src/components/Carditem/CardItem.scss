@@ -2,9 +2,31 @@
     margin: 0 10px;
     background-color: rgb(75, 75, 255);
     border-radius: 5px;
-    p {
-        color: white;
-        padding: 7px;
+    > div {
+        padding: 5px 10px;
+        margin-bottom: 10px;
+        > span{
+            color: white;
+            margin-bottom: 10px;
+        }
+        > button{
+            border: none;
+            background: none;
+            float: right;
+            padding-right: 10px;
+            width: 10px;
+            color: white;
+        }
+        > input {
+           text-indent: 5px;
+            max-width: 85%;
+            border-radius: 5px;
+            border: none;
+            transform: translateY(-10%);
+            &:focus{
+                outline: none;
+            }
+        }
     }
     transition: 1s all;
 }

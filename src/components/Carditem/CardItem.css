@@ -4,9 +4,31 @@
   border-radius: 5px;
   transition: 1s all;
 }
-.card-container p {
+.card-container > div {
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+.card-container > div > span {
   color: white;
-  padding: 7px;
+  margin-bottom: 10px;
+}
+.card-container > div > button {
+  border: none;
+  background: none;
+  float: right;
+  padding-right: 10px;
+  width: 10px;
+  color: white;
+}
+.card-container > div > input {
+  text-indent: 5px;
+  max-width: 85%;
+  border-radius: 5px;
+  border: none;
+  transform: translateY(-10%);
+}
+.card-container > div > input:focus {
+  outline: none;
 }
 
 .card-dragging {
