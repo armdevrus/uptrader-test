@@ -1,41 +1,34 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { Data } from "../../interfaces"
+import { useDispatch } from 'react-redux';
+import { PropsCardItem } from "../../interfaces"
 import './CardItem.css'
 
-interface Props {
-    data: Data
-    isDragging: boolean
-    handleDragging: (dragging: boolean) => void
-}
-
-export const CardItem = ({ data, isDragging, handleDragging }: Props) => {
+export const CardItem = ({ todo, isDragging, handleDragging, edit, apply, change }: PropsCardItem) => {
 
     const dispatch = useDispatch()
-    const todosStore = useSelector((state: { todos: Data[] }) => state.todos)
-
-    const findTodo = todosStore.find(todo => todo.id === data.id)
+    
     const handleOnDragEnd = () => handleDragging(false)
-    const handleOnDragStart = (e: React.DragEvent<HTMLDivElement>) => {
-        if (!findTodo?.isEdit){
-            e.dataTransfer.setData('text', `${data.id}`)
+    const handleOnDragStart = (e: React.DragEvent<HTMLDivElement>) => {        
+        if (!todo?.isEdit) {
+            e.dataTransfer.setData('text', `${todo.id}`)
             handleDragging(true)
         }
     }
 
-    const handleEdit = () =>
-        dispatch({ type: 'todos/edit', payload: !findTodo?.isEdit, id: data.id })
+    const handleEdit = () => {
+            dispatch(edit(!todo?.isEdit, todo.id))
+    }
 
     const handleApplyText = () => {
-        if (findTodo?.isEdit && findTodo.content) {
+        if (todo?.isEdit && todo.content) {
             handleEdit()
-            dispatch({ type: 'todos/apply', payload: findTodo.content, id: data.id })
+            dispatch(apply(todo.content, todo.id))
         } else {
 
         }
     }
     const handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (findTodo?.isEdit) {
-            dispatch({ type: 'todos/change', payload: e.target.value, id: data.id }) 
+        if (todo?.isEdit) {
+            dispatch(change(e.target.value, todo.id))
         }
     }
 
@@ -45,17 +38,17 @@ export const CardItem = ({ data, isDragging, handleDragging }: Props) => {
             className={`card-container ${isDragging ? 'card-dragging' : ''}`}
             onDragEnd={handleOnDragEnd}
             onDragStart={handleOnDragStart}
-            draggable={!findTodo?.isEdit}
+            draggable={!todo?.isEdit}
         >
             <div>
-                {!findTodo?.isEdit ?
+                {!todo?.isEdit ?
                     <>
-                        <span>{data.content}</span>
+                        <span>{todo.content}</span>
                         <button onClick={handleEdit}>&#9998;</button>
                     </>
                     : <>
-                        <input type="text" value={findTodo.content} onChange={handleChangeText} 
-                            placeholder={(findTodo?.isEdit && findTodo.content) ? '' : 'Введите текст...'}
+                        <input type="text" value={todo.content} onChange={handleChangeText}
+                            placeholder={(todo?.isEdit && todo.content) ? '' : 'Введите текст...'}
                         />
                         <button onClick={handleApplyText}>&#10004;</button>
                     </>

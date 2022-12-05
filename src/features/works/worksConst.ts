@@ -1,0 +1,5 @@
+export const WORK_ADD = 'work/add'
+export const WORK_UPDATE = 'work/update'
+export const WORK_EDIT = 'work/edit'
+export const WORK_CHANGE = 'work/change'
+export const WORK_APPLY = 'work/apply'

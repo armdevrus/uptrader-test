@@ -1,9 +1,9 @@
 import './Title.css'
 
-export const Title = () => {
+export const Title = ({ message }: { message: string }) => {
     return (
         <div className="title">
-            <h1> Drag & Drop Todo </h1>
+            <h1> {message} Todos </h1>
         </div>
     )
 }
