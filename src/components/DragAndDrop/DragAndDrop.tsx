@@ -1,25 +1,27 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Data, PropsDragAndDrop, Status } from "../../interfaces"
 import { ContainerCards } from "../ContainerCards/ContainerCards"
 import './DragAndDrop.css'
 
-
 const typesTodos: Status[] = ['Queue', 'Development', 'Done']
 export const DragAndDrop = ({ data, add, update, edit, apply, change }: PropsDragAndDrop) => {
 
-
     const [isDragging, setIsDragging] = useState<boolean>(false)
+    const [isAdd, setIsAdd] = useState<boolean>(false)
     const [text, setText] = useState<string>('')
+
+    const navigate = useNavigate()
 
     const dispatch = useDispatch()
 
     const handleUpdateList = (id: number, status: Status) => {
-        let card = data.find(task => task.id === id)
+        let todo = data.find(task => task.id === id)
 
-        if (card && card.status !== status) {
+        if (todo && todo.status !== status) {
             dispatch(
-                update(id, status, card)
+                update(id, status, todo)
             )
         }
     }
@@ -28,7 +30,7 @@ export const DragAndDrop = ({ data, add, update, edit, apply, change }: PropsDra
     const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         setText(e.target.value)
     }
-    const handleAddCard = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const handleAddtodo = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             const todo: Data = {
                 id: data.length + 1,
@@ -43,14 +45,19 @@ export const DragAndDrop = ({ data, add, update, edit, apply, change }: PropsDra
 
     return (
         <>
-            <div className="add-card">
-                <input
-                    type="text"
-                    placeholder='Add task...'
-                    value={text}
-                    onChange={handleChangeValue}
-                    onKeyDown={handleAddCard}
-                />
+            <button className='todo-btn' onClick={() => navigate(-1)}>Go back</button>
+            <button className='todo-btn-addtodo' onClick={() => setIsAdd(true)}>Add Task</button>
+            <div className="todo-modal" style={{ display: isAdd ? 'block' : 'none' }}>
+                <div className='todo-modal-content'>
+                    {isAdd && <button onClick={() => setIsAdd(false)}>x</button>}
+                    <input
+                        type="text"
+                        placeholder='Add task and press Enter...'
+                        value={text}
+                        onChange={handleChangeValue}
+                        onKeyDown={handleAddtodo}
+                    />
+                </div>
             </div>
             <div className="flex">
                 {

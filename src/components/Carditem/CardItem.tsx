@@ -32,7 +32,6 @@ export const CardItem = ({ todo, isDragging, handleDragging, edit, apply, change
         }
     }
 
-
     return (
         <div
             className={`card-container ${isDragging ? 'card-dragging' : ''}`}

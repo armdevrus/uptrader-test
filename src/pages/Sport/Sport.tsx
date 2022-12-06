@@ -9,7 +9,7 @@ const Sport = () => {
     const sportsStore = useSelector((state: RootState) => state.sports)
 
     return (
-        <div>
+        <div className='App'>
             <Title message="Sport's" />
             <DragAndDrop
                 data={sportsStore}

@@ -15,7 +15,7 @@ export default function Work() {
     const worksStore = useSelector((state: RootState) => state.works)
 
     return (
-        <div>
+        <div className='App'>
             <Title message="Work's" />
             <DragAndDrop 
                 data={worksStore}
