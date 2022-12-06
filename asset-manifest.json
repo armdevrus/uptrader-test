@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/uptrader-test/static/css/main.342e17fc.css",
-    "main.js": "/uptrader-test/static/js/main.53296689.js",
+    "main.js": "/uptrader-test/static/js/main.d3671404.js",
     "index.html": "/uptrader-test/index.html",
     "main.342e17fc.css.map": "/uptrader-test/static/css/main.342e17fc.css.map",
-    "main.53296689.js.map": "/uptrader-test/static/js/main.53296689.js.map"
+    "main.d3671404.js.map": "/uptrader-test/static/js/main.d3671404.js.map"
   },
   "entrypoints": [
     "static/css/main.342e17fc.css",
-    "static/js/main.53296689.js"
+    "static/js/main.d3671404.js"
   ]
 }
